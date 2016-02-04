@@ -1,0 +1,48 @@
+<div class="main">
+  <header class="header">
+    <div class="title">
+      <div class="main-title">
+        <h1>Event Hunt</h1>
+      </div>
+      <div class="sub-title">
+        <h2>The best new events, every day</h2>
+      </div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="category-list" style="text-align:center;margin-bottom:30px;">
+      <h3>カテゴリ一覧</h3>
+      <a href="http://localhost:3000/?category=swift">swift</a>
+      <a href="http://localhost:3000/?category=rails">rails</a>
+      <a href="http://localhost:3000/?category=スタートアップ">スタートアップ</a>
+      <a href="http://localhost:3000/?category=python">python</a>
+      <a href="http://localhost:3000/?category=go">go</a>
+      <a href="http://localhost:3000/?category=もくもく会">もくもく会</a>
+    </div>
+
+    <div class="content-title">
+      <h2>This Week (<%= @today %>〜<%= @lastDay %>)</h2>
+    </div>
+    <div class="content-events">
+      <% @events.each do |event| %>
+        <div class="event">
+          <!-- <a target="blank" href="<%= event['event_url'] %>">
+            <img src="https://connpass-tokyo.s3.amazonaws.com/thumbs/20/27/2027e7f76125028ec77713fa12c96e95.png">
+          </a> -->
+          <div class="event-title">
+            <a target="blank" href="<%= event['event_url'] %>">
+              <h3 style="font-size:14px;"><%= event['title'] %></h3>
+            </a>
+          </div>
+          <div class="event-category">
+            <%= "#{event['accepted']}/#{event['limit']}" %>
+          </div>
+          <div class="event-date" style="font-size:16px;margin:5px 0 5px 0;"><%= event['started_at'] %></div>
+          <a target="blank" href="https://maps.google.co.jp/maps?q=<%= event['address'] %>">
+            <div class="event-address" style="font-size:12px;"><%= event['address'] %></div>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
