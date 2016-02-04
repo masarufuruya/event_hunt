@@ -13,3 +13,64 @@
  *= require_tree .
  *= require_self
  */
+ .main {
+   width: 960px;
+   margin: 0 auto;
+ }
+ .main .header {
+   margin-top: 15px;
+   margin-bottom: 15px;
+ }
+ .main .main-title h1 {
+   color: #da552f;
+     font-size: 20px;
+     font-weight: 700;
+     line-height: 22px;
+     margin: 0;
+ }
+ .main .sub-title h2 {
+   color: #999;
+   font-size: 14px;
+   font-weight: 400;
+   margin-top: 0;
+ }
+ .main .content-title {
+   text-align: center;
+ }
+ .main .content h3 {
+   color: #534540;
+   font-size: 20px;
+   font-weight: 600;
+ }
+ .main .content .event {
+   transition: background-color,.1s,ease;
+       background-color: #eceae9;
+       border-radius: 4px;
+       float: left;
+       height: 141px;
+       margin: 10px;
+       padding: 10px;
+       width: 280px;
+ }
+ .main .content .event img {
+   width: 280px;
+   height: 196px;
+ }
+ .main .content .event-title h3 {
+   color: #534540;
+       font-size: 16px;
+       margin: 5px 0 5px;
+ }
+ .main .content .event-date {
+   color: #685f5c;
+   font-size: 16px;
+   margin: 0;
+   padding: 0;
+ }
+ .main .content .event-category {
+   border: 1px solid #da552f;
+   background: #da552f;
+   color: #fff;
+   padding: 2px;
+   border-radius: 5px;
+ }
