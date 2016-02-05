@@ -31,7 +31,7 @@ class MainController < ApplicationController
       category = 'swift'
     end
 
-    requestUri = 'http://connpass.com/api/v1/event/?keyword='+category+',東京&count=100&order=2&ymd='+ymd
+    requestUri = 'http://connpass.com/api/v1/event/?keyword='+category+',東京&count=20&order=2&ymd='+ymd
 
     requestUri = URI.escape(requestUri)
     uri = URI.parse(requestUri)
@@ -64,27 +64,27 @@ class MainController < ApplicationController
       result['eventType'] = 'doorkeeper'
     }
 
-    resultEvents = []
-    events.each{|conpassEvent|
-      doorkeeperEvents.each{|doorEvent|
-        if conpassEvent['started_at'] < doorEvent['started_at']
-          startStr = conpassEvent['started_at']
-          startTime = Chronic.parse(startStr)
-          if (startTime != nil)
-            conpassEvent['started_at'] = startTime.strftime('%Y年%m月%d日 %H:%M:%S')
-          end
-          resultEvents = resultEvents + [conpassEvent]
-        elsif conpassEvent['started_at'] > doorEvent['started_at']
-          timeStartAt = Chronic.parse(doorEvent['started_at'])
-          if (timeStartAt != nil)
-            timeStartAt = timeStartAt + (60*540) #tokyo
-            doorEvent['started_at'] = timeStartAt.strftime('%Y年%m月%d日 %H:%M:%S')
-          end
-          resultEvents = resultEvents + [doorEvent]
-        end
-      }
-    }
-    @events = resultEvents
+    # resultEvents = []
+    # events.each{|conpassEvent|
+    #   doorkeeperEvents.each{|doorEvent|
+    #     if conpassEvent['started_at'] < doorEvent['started_at']
+    #       startStr = conpassEvent['started_at']
+    #       startTime = Chronic.parse(startStr)
+    #       if (startTime != nil)
+    #         conpassEvent['started_at'] = startTime.strftime('%Y年%m月%d日 %H:%M:%S')
+    #       end
+    #       resultEvents = resultEvents + [conpassEvent]
+    #     elsif conpassEvent['started_at'] > doorEvent['started_at']
+    #       timeStartAt = Chronic.parse(doorEvent['started_at'])
+    #       if (timeStartAt != nil)
+    #         timeStartAt = timeStartAt + (60*540) #tokyo
+    #         doorEvent['started_at'] = timeStartAt.strftime('%Y年%m月%d日 %H:%M:%S')
+    #       end
+    #       resultEvents = resultEvents + [doorEvent]
+    #     end
+    #   }
+    # }
+    @events = events + doorkeeperEvents
   end
 
   def getDoorKeeper(keyword, sinceDate, untilDate)
