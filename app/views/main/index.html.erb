@@ -39,8 +39,9 @@
           </div>
           <div class="event-date" style="font-size:16px;margin:5px 0 5px 0;"><%= event['started_at'] %></div>
           <a target="blank" href="https://maps.google.co.jp/maps?q=<%= event['address'] %>">
-            <div class="event-address" style="font-size:12px;"><%= event['address'] %></div>
+            <span class="event-address" style="font-size:12px;"><%= event['address'] %></span>
           </a>
+          <span style="margin-left:5px;"><%= event['eventType'] %></span>
         </div>
       <% end %>
     </div>
