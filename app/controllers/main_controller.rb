@@ -88,7 +88,7 @@ class MainController < ApplicationController
   end
 
   def getDoorKeeper(keyword, sinceDate, untilDate)
-    requestUri = "http://api.doorkeeper.jp/events/?q=#{keyword}&since=#{sinceDate}&until=#{untilDate}&sort=starts_at"
+    requestUri = "http://api.doorkeeper.jp/events/?q=#{keyword},東京&since=#{sinceDate}&until=#{untilDate}&sort=starts_at"
     requestUri = URI.escape(requestUri)
     uri = URI.parse(requestUri)
     json = Net::HTTP.get(uri)
