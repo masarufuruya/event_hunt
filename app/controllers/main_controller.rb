@@ -31,12 +31,11 @@ class MainController < ApplicationController
       category = 'swift'
     end
 
-    requestUri = 'http://connpass.com/api/v1/event/?keyword='+category+',東京&count=20&order=2&ymd='+ymd
+    requestUri = 'https://connpass.com/api/v1/event/?keyword='+category+',東京&count=20&order=2&ymd='+ymd
 
     requestUri = URI.escape(requestUri)
     uri = URI.parse(requestUri)
     json = Net::HTTP.get(uri)
-    #gem pry-rails入れるだけ
     result = JSON.parse(json)
 
     events = result['events'].reverse
